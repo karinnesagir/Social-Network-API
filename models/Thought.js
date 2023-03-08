@@ -1,6 +1,37 @@
 const { Schema, model, Types } = require('mongoose');
-const moment = require('moment');
 
+// Create Reaction Schema
+const ReactionsSchema = new Schema(
+    {
+    reactionId: {
+        type: Schema.Types.ObjectId,
+        default: new Types.ObjectId()
+    },
+    reactionBody: {
+        type: String,
+        required: true,
+        maxlength: 280
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: function() {
+            return new Date().toISOString();
+        },
+    }
+    },
+    {
+    toJSON: {
+        getters: true
+    } 
+    }
+);
+
+// Create Thouhght Schema
 const ThoughtSchema = new Schema(
     {
     thoughtText: {
@@ -12,7 +43,9 @@ const ThoughtSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+        get: function() {
+            return new Date().toISOString();
+        },    
     },
     username: {
         type: String,
@@ -29,38 +62,12 @@ const ThoughtSchema = new Schema(
     }
 );
 
-const ReactionsSchema = new Schema(
-    {
-    reactionId: {
-        type: Schema.Types.ObjectId,
-        default: ()=> new Types.ObjectId()
-    },
-    reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
-    }
-    },
-    {
-    toJSON: {
-        getters: true
-    } 
-    }
-);
-
+// Count reactions
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
 
-const Thoughts = model('Thoughts', ThoughtSchema);
+// Initialize the Thought model
+const Thought = model('Thought', ThoughtSchema);
 
-module.exports = Thoughts;
+module.exports = Thought;
