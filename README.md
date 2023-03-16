@@ -50,9 +50,9 @@ npm start
 
 ## Usage
 
-Here is a [Link](https://drive.google.com/file/d/1jjzMLTY4qLnaWT_PX0JcLBQqvXi9ZCvF/view?usp=sharing) to a walkthrough video that demonstrates the functionality of the application.
+Here is a [Link](https://watch.screencastify.com/v/zbEHweVyVfg302qOL6uM) to a walkthrough video that demonstrates the functionality of the application.
 
-Here is a [Link](https://drive.google.com/file/d/1--ZhujnK-d-qb_JuWVHXIK78aWFm6R4m/view?usp=sharing) to a walkthrough video that demonstrates the routes and how the invoke the application.
+Here is a [Link](https://watch.screencastify.com/v/FPAm2CeuptpQFi7Lojen) to a walkthrough video that demonstrates the routes of the application and how the invoke the application.
 
 ## Packages
 
